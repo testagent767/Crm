@@ -1,117 +1,122 @@
-body{margin:0;font-family:Inter,Arial;background:#f5f7fa}
-.app{display:flex;height:100vh}
-
-/* SIDEBAR */
-.sidebar{
-  width:300px;background:#0f172a;color:#fff;
-  padding:16px;overflow-y:auto
-}
-.nav{
-  padding:10px;border-radius:8px;
-  cursor:pointer;margin-bottom:6px
-}
-.nav:hover,.nav.active{background:#1e293b}
-.section-title{font-size:12px;opacity:.6;margin:14px 0 6px}
-
-/* LEADS */
-.lead{
-  padding:12px;background:#1e293b;
-  border-radius:8px;margin-bottom:8px;
-  cursor:pointer
-}
-.lead:hover{background:#334155}
-.badges{display:flex;gap:6px;margin-top:6px}
-.badge{font-size:11px;padding:2px 6px;border-radius:6px}
-.score{background:#22c55e}
-.unread{background:#ef4444}
-.status{background:#38bdf8}
-
-/* CONTENT */
-.content{flex:1;display:grid;grid-template-columns:2fr 1fr}
-.main{padding:20px;overflow-y:auto}
-.panel{
-  background:#fff;border-radius:10px;
-  padding:16px;margin-bottom:16px
-}
-
-/* DASHBOARD */
-.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.stat{background:#f8fafc;border-radius:8px;padding:12px}
-.stat b{font-size:20px}
-
-/* MESSAGES */
-.messages{max-height:260px;overflow:auto;margin-bottom:10px}
-.msg{
-  padding:10px;border-radius:8px;
-  margin-bottom:8px;font-size:14px;max-width:70%
-}
-.customer{background:#e0f2fe}
-.human{background:#dcfce7;margin-left:auto}
-.ai{background:#fff7ed}
-
-.msg.ai {
-  background: #fef3c7;
-  margin-left: auto;
-  position: relative;
-  padding-right: 32px;
-}
-
-.msg.ai .ai-badge {
-  position: absolute;
-  top: 4px;
-  right: 6px;
-  font-size: 10px;
-  opacity: 0.7;
-}
-
-/* CHAT INPUT */
-.chat-box{display:flex;gap:8px;align-items:flex-end}
-.chat-box textarea{
-  flex:1;resize:none;height:60px;
-  border-radius:10px;border:1px solid #cbd5e1;
-  padding:10px;font-family:inherit
-}
-.chat-box button{
-  height:60px;width:60px;
-  border-radius:10px;border:none;
-  background:#2563eb;color:#fff;
-  font-size:20px;cursor:pointer
-}
-
-/* BUTTONS */
-button.toggle{
-  font-size:18px;border:none;
-  background:#f1f5f9;border-radius:6px;
-  cursor:pointer;padding:6px 10px;
-  margin-right:8px
-}
-button.danger{
-  background:#ef4444;color:#fff;
-  padding:6px 10px;border-radius:6px;
-  border:none;cursor:pointer
-}
-
-/* MODAL */
-.modal-backdrop{
-  position:fixed;inset:0;
-  background:rgba(0,0,0,.5);
-  display:none;align-items:center;justify-content:center;
-}
-.modal{
-  background:#fff;border-radius:12px;
-  width:360px;padding:16px
-}
-.modal input,.modal textarea{
-  width:100%;margin-bottom:8px;
-  padding:8px;border-radius:6px;
-  border:1px solid #cbd5e1;
-  box-sizing:border-box
-}
-.modal-actions{
-  display:flex;gap:8px;justify-content:flex-end
-}
-.modal-actions button{
-  padding:8px 16px;border-radius:6px;
-  border:none;cursor:pointer;
-  background:#e2e8f0;color:#000
+ body{margin:0;font-family:Inter,Arial;background:#f5f7fa}  
+.app{display:flex;height:100vh}  
+  
+/* SIDEBAR */  
+.sidebar{  
+  width:300px;background:#0f172a;color:#fff;  
+  padding:16px;overflow-y:auto  
+}  
+.nav{  
+  padding:10px;border-radius:8px;  
+  cursor:pointer;margin-bottom:6px  
+}  
+.nav:hover,.nav.active{background:#1e293b}  
+.section-title{font-size:12px;opacity:.6;margin:14px 0 6px}  
+  
+/* LEADS */  
+.lead{  
+  padding:12px;background:#1e293b;  
+  border-radius:8px;margin-bottom:8px;  
+  cursor:pointer  
+}  
+.lead:hover{background:#334155}  
+.badges{display:flex;gap:6px;margin-top:6px}  
+.badge{font-size:11px;padding:2px 6px;border-radius:6px}  
+.score{background:#22c55e}  
+.unread{background:#ef4444}  
+.status{background:#38bdf8}  
+  
+/* CONTENT */  
+.content{flex:1;display:grid;grid-template-columns:2fr 1fr}  
+.main{padding:20px;overflow-y:auto}  
+.panel{  
+  background:#fff;border-radius:10px;  
+  padding:16px;margin-bottom:16px  
+}  
+  
+/* DASHBOARD */  
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}  
+.stat{background:#f8fafc;border-radius:8px;padding:12px}  
+.stat b{font-size:20px}  
+  
+/* MESSAGES */  
+.messages{max-height:260px;overflow:auto;margin-bottom:10px}  
+.msg{  
+  padding:10px;border-radius:8px;  
+  margin-bottom:8px;font-size:14px;max-width:70%  
+}  
+.customer{background:#e0f2fe}  
+.human{background:#dcfce7;margin-left:auto}  
+.ai{background:#fff7ed}  
+  
+.msg.ai{  
+  background:#fef3c7;  
+  margin-left:auto;  
+  position:relative;  
+  padding-right:32px  
+}  
+  
+.msg.ai .ai-badge{  
+  position:absolute;  
+  top:4px;  
+  right:6px;  
+  font-size:10px;  
+  opacity:0.7;  
+  background:#fbbf24;  
+  color:#78350f;  
+  padding:2px 4px;  
+  border-radius:4px;  
+  font-weight:600  
+}  
+  
+/* CHAT INPUT */  
+.chat-box{display:flex;gap:8px;align-items:flex-end}  
+.chat-box textarea{  
+  flex:1;resize:none;height:60px;  
+  border-radius:10px;border:1px solid #cbd5e1;  
+  padding:10px;font-family:inherit  
+}  
+.chat-box button{  
+  height:60px;width:60px;  
+  border-radius:10px;border:none;  
+  background:#2563eb;color:#fff;  
+  font-size:20px;cursor:pointer  
+}  
+  
+/* BUTTONS */  
+button.toggle{  
+  font-size:18px;border:none;  
+  background:#f1f5f9;border-radius:6px;  
+  cursor:pointer;padding:6px 10px;  
+  margin-right:8px  
+}  
+button.danger{  
+  background:#ef4444;color:#fff;  
+  padding:6px 10px;border-radius:6px;  
+  border:none;cursor:pointer  
+}  
+  
+/* MODAL */  
+.modal-backdrop{  
+  position:fixed;inset:0;  
+  background:rgba(0,0,0,.5);  
+  display:none;align-items:center;justify-content:center;  
+}  
+.modal{  
+  background:#fff;border-radius:12px;  
+  width:360px;padding:16px  
+}  
+.modal input,.modal textarea{  
+  width:100%;margin-bottom:8px;  
+  padding:8px;border-radius:6px;  
+  border:1px solid #cbd5e1;  
+  box-sizing:border-box  
+}  
+.modal-actions{  
+  display:flex;gap:8px;justify-content:flex-end  
+}  
+.modal-actions button{  
+  padding:8px 16px;border-radius:6px;  
+  border:none;cursor:pointer;  
+  background:#e2e8f0;color:#000  
 }
