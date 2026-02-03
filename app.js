@@ -242,5 +242,91 @@ async function selectLead(lead) {
     sortedMessages.forEach(msg => {
       const d = document.createElement("div");
       d.className = `msg ${msg.sender_type}`;
-      d.textContent = msg.message_text;
+      
       if (msg.sender_type === "ai") {
+        const textNode = document.createTextNode(msg.message_text);
+        d.appendChild(textNode);
+        const badge = document.createElement("span");
+        badge.className = "ai-badge";
+        badge.textContent = "AI";
+        d.appendChild(badge);
+      } else {
+        d.textContent = msg.message_text;
+      }
+      
+      messagesDiv.appendChild(d);
+    });
+  } else {
+    const d = document.createElement("div");
+    d.style.textAlign = "center";
+    d.style.color = "#94a3b8";
+    d.textContent = "No messages yet";
+    messagesDiv.appendChild(d);
+  }
+  
+  const aiPanel = document.getElementById("aiPanel");
+  if (details && details.ai_insight) {
+    const ai = details.ai_insight;
+    aiPanel.innerHTML = `
+      <h3>AI Insights</h3>
+      <p><b>Intent:</b> ${ai.intent || 'N/A'}</p>
+      <p><b>Urgency:</b> ${ai.urgency || 'N/A'}</p>
+      <p><b>Buying:</b> ${ai.buying_signal || 'N/A'}</p>
+      <p><b>Next:</b> ${ai.next_best_action || 'N/A'}</p>
+      <p><b>Confidence:</b> ${ai.confidence_score || 'N/A'}</p>
+    `;
+  } else {
+    aiPanel.innerHTML = `<h3>AI Insights</h3><p>No data</p>`;
+  }
+}
+
+function showClose() {
+  document.getElementById("closeModal").style.display = "flex";
+}
+
+function hideClose() {
+  document.getElementById("closeModal").style.display = "none";
+  document.getElementById("closeMoney").value = "";
+  document.getElementById("closeBy").value = "";
+  document.getElementById("closeReason").value = "";
+}
+
+async function confirmClose() {
+  const money = document.getElementById("closeMoney").value;
+  const by = document.getElementById("closeBy").value;
+  const reason = document.getElementById("closeReason").value;
+  
+  if (!selectedLead) return;
+  
+  await closeLead(selectedLead.lead_id, by, reason, money);
+  
+  const leadIndex = allLeads.findIndex(l => l.lead_id === selectedLead.lead_id);
+  if (leadIndex !== -1) {
+    allLeads[leadIndex].is_closed = true;
+  }
+  
+  hideClose();
+  renderLeads();
+  await selectLead(selectedLead);
+}
+
+async function toggleAuto() {
+  if (!selectedLead) return;
+  
+  const newValue = !selectedLead.automate_response;
+  await toggleAutomateResponse(selectedLead.lead_id, newValue);
+  
+  const leadIndex = allLeads.findIndex(l => l.lead_id === selectedLead.lead_id);
+  if (leadIndex !== -1) {
+    allLeads[leadIndex].automate_response = newValue;
+  }
+  
+  selectedLead.automate_response = newValue;
+  await selectLead(selectedLead);
+}
+
+(async function init() {
+  await fetchDashboard();
+  await fetchLeads();
+  render();
+})();
