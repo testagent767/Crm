@@ -106,7 +106,7 @@ async function sendMessage() {
   }
 }
 
-async function closeLead(leadId, closedBy, closedReason, closedMoney) {
+async function closeLead(leadId, closedBy, closedReason, closedMoney, closeType) {
   try {
     await fetch(API_BASE, {
       method: 'POST',
@@ -115,7 +115,8 @@ async function closeLead(leadId, closedBy, closedReason, closedMoney) {
         lead_id: leadId,
         closed_by: closedBy,
         closed_reason: closedReason,
-        closed_money: parseFloat(closedMoney) || 0
+        closed_money: parseFloat(closedMoney) || 0,
+        close_type: closeType
       })
     });
   } catch (error) {
@@ -286,19 +287,26 @@ function showClose() {
 
 function hideClose() {
   document.getElementById("closeModal").style.display = "none";
+  document.getElementById("closeType").value = "";
   document.getElementById("closeMoney").value = "";
   document.getElementById("closeBy").value = "";
   document.getElementById("closeReason").value = "";
 }
 
 async function confirmClose() {
+  const closeType = document.getElementById("closeType").value;
   const money = document.getElementById("closeMoney").value;
   const by = document.getElementById("closeBy").value;
   const reason = document.getElementById("closeReason").value;
   
   if (!selectedLead) return;
   
-  await closeLead(selectedLead.lead_id, by, reason, money);
+  if (!closeType) {
+    alert("Please select win or lost");
+    return;
+  }
+  
+  await closeLead(selectedLead.lead_id, by, reason, money, closeType);
   
   const leadIndex = allLeads.findIndex(l => l.lead_id === selectedLead.lead_id);
   if (leadIndex !== -1) {
