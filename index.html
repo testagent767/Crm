@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lead CRM</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="nav active" id="navDashboard" onclick="showDashboard()">🏠 Dashboard</div>
+  <div class="nav" id="navLeads" onclick="showLeads()">📥 Leads</div>
+
+  <div id="leadSections">
+    <div class="section-title">Active Leads</div>
+    <div id="activeLeads"></div>
+    <div class="section-title">Closed Leads</div>
+    <div id="closedLeads"></div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<div class="main" id="mainView"></div>
+
+<div class="main">
+  <div class="panel ai" id="aiPanel">
+    <h3>AI Insights</h3>
+    <p>Select a lead</p>
+  </div>
+</div>
+
+</div>
+</div>
+
+<!-- CLOSE POPUP -->
+<div class="modal-backdrop" id="closeModal">
+  <div class="modal">
+    <h3>Close Lead</h3>
+    <input id="closeMoney" type="number" placeholder="Closed money (₺)" />
+    <input id="closeBy" placeholder="Closed by" />
+    <textarea id="closeReason" placeholder="Close reason"></textarea>
+
+    <div class="modal-actions">
+      <button onclick="hideClose()">Cancel</button>
+      <button class="danger" onclick="confirmClose()">Confirm</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
